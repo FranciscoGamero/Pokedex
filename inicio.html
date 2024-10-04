@@ -16,7 +16,8 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../Pokedex/css/estilo.css">
   </head>
 
   <body>
@@ -39,6 +40,68 @@
           </div>
         </div>
       </nav>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container-fluid">
+          <form class="d-flex">
+            <input class="form-control me-2 ms-5" type="text" placeholder="Search">
+            <button class="btn btn-light text-dark" type="button"><i class="bi bi-search"></i></button>
+        </form>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav flex-grow-1 justify-content-center">
+                    <li class="nav-item mx-auto">
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-danger dropdown-toggle text-warning" data-bs-toggle="dropdown">
+                          Generación
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Generación 1</a></li>
+                          <li><a class="dropdown-item" href="#">Generación 2</a></li>
+                          <li><a class="dropdown-item" href="#">Generación 3</a></li>
+                          <li><a class="dropdown-item" href="#">Generación 4</a></li>
+                          <li><a class="dropdown-item" href="#">Generación 5</a></li>
+                          <li><a class="dropdown-item" href="#">Generación 6</a></li>
+                          <li><a class="dropdown-item" href="#">Generación 7</a></li>
+                          <li><a class="dropdown-item" href="#">Generación 8</a></li>
+                          <li><a class="dropdown-item" href="#">Generación 9</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="nav-item mx-auto">
+                      <div class="dropdown">
+                        <button type="button" class="btn btn-danger dropdown-toggle text-warning" data-bs-toggle="dropdown">
+                          Tipo
+                        </button>
+                        <ul class="dropdown-menu w-auto">
+                          <ul class="row list-unstyled">
+                            <li class="col-5"><a class="dropdown-item" href="#">Planta</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Hielo</a></li>
+                            <li class="col-5"><a class="dropdown-item" href="#">Acero</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Lucha</a></li>
+                            <li class="col-5"><a class="dropdown-item" href="#">Agua</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Normal</a></li>
+                            <li class="col-5"><a class="dropdown-item" href="#">Bicho</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Psíquico</a></li>
+                            <li class="col-5"><a class="dropdown-item" href="#">Dragón</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Roca</a></li>
+                            <li class="col-5"><a class="dropdown-item" href="#">Eléctrico</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Siniestro</a></li>
+                            <li class="col-5"><a class="dropdown-item" href="#">Fantasma</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Tierra</a></li>
+                            <li class="col-5"><a class="dropdown-item" href="#">Fuego</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Veneno</a></li>
+                            <li class="col-5"><a class="dropdown-item" href="#">Hada</a></li>
+                            <li class="col-7"><a class="dropdown-item" href="#">Volador</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-3">      
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pokemonModal">
+        Ver Bulbasaur
+    </button>
 
       <div class="mx-auto ps-5 align-content-center ms-5">
     
@@ -177,11 +240,59 @@
         
       
      
+    <!-- Modal -->
+    <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg bg-body-tertiary">
+            <div class="modal-content">
+                <!-- Modal Header with Title -->
+                <div class="pokemon-title row">
+                  <h1 class="mx-5 mt-4 ms-5 border-black col-9"><span class="text-bg-success rounded-3 p-3">Bulbasaur</span></h1>
+                  <button type="button" class="btn col w-25" data-bs-dismiss="modal"><span class="text-danger text-bg-light p-2 rounded-3">X</span></button>
+                </div>
 
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Image Section -->
+                        <div class="col-md-6 rounded-4">
+                            <div class="pokemon-image">
+                                <img src="../Pokedex/img/Bulbasaur.png" alt="Bulbasaur" class="img-fluid bg-success border-black rounded-3">
+                            </div>
+                        </div>
 
-
-
-
-
+                        <!-- Info Section -->
+                        <div class="col-md-6">
+                            <div class="abilities bg-success rounded-3 p-2">
+                                <p class="ms-4"><strong>Habilidad:</strong> Espesura</p>
+                                <p class="ms-4"><strong>Habilidad oculta:</strong> Clorofila</p>
+                            </div>
+                            <div class="info-section bg-success rounded-3 mt-5 p-2">
+                                <p>Bulbasaur es un Pokémon verde de cuatro patas con un bulbo en su espalda que almacena energía solar. Vive en jardines, zonas boscosas y cerca de agua. Es omnívoro y puede realizar fotosíntesis en ausencia de alimento.</p>
+                            </div>
+                            <div class="stats row text-center h-25 mt-5">
+                              <div class="col-3 mx-auto bg-success rounded-3">
+                                <h1 class="fs-5"><strong>Sexo</strong><br><span class="fs-5">♂ ♀</span>
+                                </h1>
+                              </div>
+                              <div class="col-3 mx-auto bg-success rounded-3">
+                                  <strong>Altura</strong><br>
+                                  <span>0,7 m</span>
+                              </div>
+                              <div class="col-3 mx-auto bg-success rounded-3">
+                                  <strong>Peso</strong><br>
+                                  <span>6,9 kg</span>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- Type Buttons -->
+                    <div class="d-flex"> 
+                        <h1 class="ms-4 mt- mx-1 border-3"><span class="bg-success rounded-3">PLANTA</span></h1>
+                        <h1 class="mx-1 mt- border-3"><span class="fondoVeneno rounded-3">VENENO</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>
