@@ -52,31 +52,16 @@ $(document).ready(function () {
             var habilidadesOcultas = data.abilities
             .filter(ability => ability.is_hidden) 
             .map(ability => capitalize(ability.ability.name))
-/*
               $('#pokemon-name').text(data.name.toUpperCase());
               $('#pokemon-image').attr('src',data.sprites.other['official-artwork'].front_default);
                $('#habilidad-pokemon').text(habilidadesVisibles.join(', '));
               $('#pokemon-habilidad-oculta').text(habilidadesOcultas.join(`, `));
               $('#altura-pokemon').text(`${data.height / 10} m`);
               $('#peso-pokemon').text(`${data.weight / 10} kg`);
-              $('#tipo-pokemon-1').text(habilidades.forEach(habilidad => $.ajax({
-                url: `https://pokeapi.co/api/v2/type`,
-                method: "GET",
-                success: function (data) {
-                    // Obtener todos los tipos y sus nombres
-                    var tipos = data.results.map(tipo => tipo.name);
-            
-                    // Aquí podrías usar los nombres para buscar las imágenes manualmente
-                    tipos.forEach(tipo => {
-                        // Asumamos que tienes las URLs de las imágenes de tipos
-                        var spriteUrl = `/path/to/sprites/${tipo}.png`; // Reemplaza con la ruta real de tus imágenes
-                        console.log(`Tipo: ${tipo}, Sprite URL: ${spriteUrl}`);
-                    });
-                }
-            })));
-              */
+              $('#tipo-pokemon-1').text(data.types[0] ? data.types[0].type.sprites : '')
+              console.log(data.types[0].type.sprites)
               if(data.types[1]){
-                $('#tipo-pokemon-2').text(data.types[1] ? data.types[1].type.name.toUpperCase() : '')
+                $('#tipo-pokemon-2').text(data.types[1] ? data.types[1].type.sprites : '')
                 $('#tipo-pokemon-2').show(); 
               } else{
                 $('#tipo-pokemon-2').hide();
