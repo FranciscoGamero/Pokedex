@@ -1,7 +1,12 @@
 $(document).ready(function () {
     getPokemonListV2();
 
-    
+    function capitalize(text) {
+        const primeraLetra = text.charAt(0);
+        const resto = text.slice(1);
+        return primeraLetra.toUpperCase() + resto.toLowerCase();
+      }
+
     function getPokemonListV2() {
     $('#listaPokemon');
         $.ajax({
@@ -35,38 +40,49 @@ $(document).ready(function () {
             $.ajax({
                 url: `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`,
                 method: "GET",
-                success: function (speciesData) {
-                    // Variables para almacenar las traducciones
-                    let habilidad = '';
-                    let habilidadOculta = '';
-
-                    // Buscar habilidades en español
-                    speciesData.flavor_text_entries.forEach(entry => {
-                        if (entry.language.name === "es") {
-                            habilidad = entry.flavor_text;
-                        }
-                    });
+                success: function (data) {
+                    var descripcionEs = data.flavor_text_entries.find(entry => entry.language.name === 'es');
+                    $('#descripcion-pokemon').text(descripcionEs ? descripcionEs.flavor_text : 'Descripción no disponible');
                 }
-            })
+            });
+           // var habilidades = data.abilities;
+            var habilidadesVisibles = data.abilities
+            .filter(ability => !ability.is_hidden)
+            .map(ability => capitalize(ability.ability.name))
+            var habilidadesOcultas = data.abilities
+            .filter(ability => ability.is_hidden) 
+            .map(ability => capitalize(ability.ability.name))
+/*
               $('#pokemon-name').text(data.name.toUpperCase());
               $('#pokemon-image').attr('src',data.sprites.other['official-artwork'].front_default);
-              $('#habilidad-pokemon').text(data.abilities[0].ability.name.toUpperCase());
-              $('#pokemon-habilidad-oculta').text(data.abilities[1]?.ability.name.toUpperCase() || 'Ninguna');
+               $('#habilidad-pokemon').text(habilidadesVisibles.join(', '));
+              $('#pokemon-habilidad-oculta').text(habilidadesOcultas.join(`, `));
               $('#altura-pokemon').text(`${data.height / 10} m`);
               $('#peso-pokemon').text(`${data.weight / 10} kg`);
-              $('#tipo-pokemon-1').text(data.types[0].type.name.toUpperCase());
-              $('#tipo-pokemon-2').text(data.types[1] ? data.types[1].type.name.toUpperCase() : ''); 
+              $('#tipo-pokemon-1').text(habilidades.forEach(habilidad => $.ajax({
+                url: `https://pokeapi.co/api/v2/type`,
+                method: "GET",
+                success: function (data) {
+                    // Obtener todos los tipos y sus nombres
+                    var tipos = data.results.map(tipo => tipo.name);
+            
+                    // Aquí podrías usar los nombres para buscar las imágenes manualmente
+                    tipos.forEach(tipo => {
+                        // Asumamos que tienes las URLs de las imágenes de tipos
+                        var spriteUrl = `/path/to/sprites/${tipo}.png`; // Reemplaza con la ruta real de tus imágenes
+                        console.log(`Tipo: ${tipo}, Sprite URL: ${spriteUrl}`);
+                    });
+                }
+            })));
+              */
+              if(data.types[1]){
+                $('#tipo-pokemon-2').text(data.types[1] ? data.types[1].type.name.toUpperCase() : '')
+                $('#tipo-pokemon-2').show(); 
+              } else{
+                $('#tipo-pokemon-2').hide();
+              }; 
               $('#pokemonModal').modal('show');
           }
         })
-        $.ajax({
-            url: `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`,
-            method: "GET",
-            success: function (data) {
-                const descripcionEs = data.flavor_text_entries.find(entry => entry.language.name === 'es');
-                $('#descripcion-pokemon').text(descripcionEs ? descripcionEs.flavor_text : 'Descripción no disponible');
-            }
-        });
   });
-  
 });
