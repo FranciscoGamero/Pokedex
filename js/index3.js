@@ -58,10 +58,9 @@ $(document).ready(function () {
               $('#pokemon-habilidad-oculta').text(habilidadesOcultas.join(`, `));
               $('#altura-pokemon').text(`${data.height / 10} m`);
               $('#peso-pokemon').text(`${data.weight / 10} kg`);
-              $('#tipo-pokemon-1').text(data.types[0] ? data.types[0].type.sprites : '')
-              console.log(data.types[0].type.sprites)
+              $('#tipo-pokemon-1').text(data.types[0] ? capitalize(data.types[0].type.name) : '')
               if(data.types[1]){
-                $('#tipo-pokemon-2').text(data.types[1] ? data.types[1].type.sprites : '')
+                $('#tipo-pokemon-2').text(data.types[1] ? capitalize(data.types[1].type.name) : '')
                 $('#tipo-pokemon-2').show(); 
               } else{
                 $('#tipo-pokemon-2').hide();
