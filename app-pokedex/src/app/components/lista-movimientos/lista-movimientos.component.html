@@ -1,1 +1,9 @@
-<p>lista-movimientos works!</p>
+<div class="row">
+    @for (move of listaMovimiento; track move.url.split("/")[5]) {
+        <div class="card m-2 fondo-item" style="width: 18rem;" id="${pokemonId}">
+            <div class="mx-auto mb-4">
+                <h5 class="card-text text-light">{{move.name.toLocaleUpperCase()}}</h5>
+            </div>
+        </div>
+    }
+</div>
