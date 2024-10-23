@@ -1,1 +1,12 @@
-<p>lista-item works!</p>
+<div class="row">
+    @for (item of listaItem; track item.url.split("/")[5]) {
+        <div class="card m-2 fondo-item" style="width: 18rem;" id="${pokemonId}">
+            <img [src]="getImagenUrl(item.name)" class="card-img-top" alt="{{item.name}}">
+            <div class="card-body">
+            </div>
+            <div class="mx-auto mb-4">
+                <h5 class="card-text text-light">{{item.name.toLocaleUpperCase()}}</h5>
+            </div>
+        </div>
+    }
+</div>
