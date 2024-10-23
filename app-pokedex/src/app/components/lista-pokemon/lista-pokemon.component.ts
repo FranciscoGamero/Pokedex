@@ -18,4 +18,9 @@ export class ListaPokemonComponent implements OnInit{
   getImagenPokemon(value: String){
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${value.split('/')[6]}.png`
   }
+  capitalizeNombrePokemon(value: String){
+    let primeraLetra = value.charAt(0);
+    let resto = value.slice(1);
+    return primeraLetra.toUpperCase() + resto.toLowerCase();
+  }
 }
