@@ -9,6 +9,7 @@ import { ListaItemComponent } from './components/lista-item/lista-item.component
 import { ListaMovimientosComponent } from './components/lista-movimientos/lista-movimientos.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
