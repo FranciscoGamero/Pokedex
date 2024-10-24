@@ -3,9 +3,7 @@
     <div class="card col-3 m-2" style="width: 18rem;">
         <img [src]="getImagenPokemon(pokemon.url)" class="card-img-top" alt="...">
         <div class="card-body">
-            <button type="button" class="btn-ver-pokemon btn btn-danger text-warning" data-id="${pokemonId}" data-bs-toggle="modal" data-bs-target="#pokemonModal${pokemonId}">
-                Ver Pokemon
-            </button>
+            <button class="btn btn-lg btn-danger" (click)="openModal(pokemon)">VerPokemon</button>
             <h3 class="mt-4">{{capitalizeNombrePokemon(pokemon.name)}}</h3>
             <h4>#{{pokemon.url.split('/')[6]}}</h4>
         </div>

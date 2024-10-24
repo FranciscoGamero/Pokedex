@@ -1,0 +1,16 @@
+.custom-image {
+    width: 500px; /* Cambia este valor según sea necesario */
+    height: auto; /* Mantiene la relación de aspecto */
+}
+.fondoModal{
+    background-color: #139320;
+}
+.fondoInfo{
+    background-color: #5bd067;
+}
+* {
+    font-size: 30px;
+}
+.fondoTipo{
+    background: linear-gradient(135deg, #FFFFFF, #66b309);
+}
