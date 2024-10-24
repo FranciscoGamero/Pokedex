@@ -27,3 +27,6 @@
 .volador{
     background-color: #A1CFC7 ;
 }
+a:visited{
+    color: yellow;
+}
