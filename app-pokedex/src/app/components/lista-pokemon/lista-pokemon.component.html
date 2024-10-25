@@ -1,11 +1,11 @@
 <div class="row">
     @for (pokemon of listaPokemon; track pokemon.url.split('/')[6]) {
-    <div class="card col-3 m-2" style="width: 18rem;">
+    <div class="card bg-danger col-3 m-2" style="width: 18rem;">
         <img [src]="getImagenPokemon(pokemon.url)" class="card-img-top" alt="...">
         <div class="card-body">
-            <button class="btn btn-lg btn-danger" (click)="openModal(pokemon)">VerPokemon</button>
-            <h3 class="mt-4">{{capitalizeNombrePokemon(pokemon.name)}}</h3>
-            <h4>#{{pokemon.url.split('/')[6]}}</h4>
+            <button class="btn btn-lg btn-warning" (click)="openModal(pokemon)">Ver Pokemon</button>
+            <h3 class="mt-4 text-light">{{capitalizeNombrePokemon(pokemon.name)}}</h3>
+            <h4 class="text-light">#{{pokemon.url.split('/')[6]}}</h4>
         </div>
     </div>
 }
