@@ -1,15 +1,25 @@
 <div class="row">
     @for (movimiento of listaMovimiento; track movimiento.url.split("/")[5]) {
-        <div class="card m-2 fondo-item" style="width: 18rem;" id="${pokemonId}">
-            <div class="mx-auto mb-4">
-                <h5 class="card-text text-light">{{movimiento.name.toLocaleUpperCase()}}</h5>
-                <p><strong>Precisión:</strong> {{movimientoDetalles[movimiento.name].accuracy}}</p>
-                <p><strong>Poder:</strong> {{movimientoDetalles[movimiento.name].power}}</p>
-                <p><strong>PP:</strong> {{movimientoDetalles[movimiento.name].pp}}</p>
-                <p><strong>Tipo:</strong> {{movimientoDetalles[movimiento.name].type.name}}</p>
-                <p><strong>Descripción:</strong> {{movimientoDetalles[movimiento.name].effect_entries[0].effect}}</p>
-            </div>
+        <div class="card col-12 col-md-6 col-lg-4 m-2 fondo-item shadow-sm" style="width: 18rem;">
 
+            <div class=" mt-1 text-center text-light">
+                <h5 class="card-title mb-0">{{ movimiento.name.toLocaleUpperCase() }}</h5>
+            </div>
+            <div class="card-body text-light">
+                <div class="row">
+                    <div class="col-6">
+                        <p><strong>Accuracy:</strong> {{ movimientoDetalles[movimiento.name]!.accuracy || 'Not Found' }}</p>
+                        <p><strong>Power:</strong> {{ movimientoDetalles[movimiento.name]!.power || 'Not Found' }}</p>
+                        <p><strong>PP:</strong> {{ movimientoDetalles[movimiento.name]!.pp || 'Not Found' }}</p>
+                        <p><strong>Type:</strong> {{ movimientoDetalles[movimiento.name]!.type.name || 'Not Found' }}</p>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <p><strong>Description:</strong> 
+                            {{ (movimientoDetalles[movimiento.name]!.effect_entries[0]!.effect || 'Descripción no disponible').slice(0, 100) }}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     }
 </div>
