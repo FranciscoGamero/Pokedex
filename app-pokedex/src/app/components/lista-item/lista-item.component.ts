@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DetalleObjeto, Item } from '../../models/item.interface';
 import { ItemService } from '../../services/item.service';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -14,7 +14,8 @@ export class ListaItemComponent implements OnInit {
   listaItem: Item[]=[];
 
  ItemSeleccionado: DetalleObjeto | undefined;
-  itemDescripcion: string = '';
+ itemDescripcion: { [key: string]: string } = {};
+
 
   constructor(private itemServicio: ItemService, private http: HttpClient){}
 
@@ -29,10 +30,11 @@ export class ListaItemComponent implements OnInit {
   }
 
 
+
   getItemDescription(item: Item): void {
     this.itemServicio.getOneItem(item.name).subscribe(detalle => {
       const flavorTextEntry = detalle.flavor_text_entries.find(entry => entry.language.name === 'es');
-      item.descripcion = flavorTextEntry?.text || '';
+      this.itemDescripcion[item.name] = flavorTextEntry!.text || '';
     });
   }
 

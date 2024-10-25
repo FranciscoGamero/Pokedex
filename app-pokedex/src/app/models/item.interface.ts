@@ -6,7 +6,6 @@ export interface ListaItemsResponse {
   }
   
   export interface Item {
-    descripcion: string
     name: string
     url: string
   }
