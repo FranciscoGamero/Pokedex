@@ -1,9 +1,15 @@
 <div class="row">
-    @for (move of listaMovimiento; track move.url.split("/")[5]) {
+    @for (movimiento of listaMovimiento; track movimiento.url.split("/")[5]) {
         <div class="card m-2 fondo-item" style="width: 18rem;" id="${pokemonId}">
             <div class="mx-auto mb-4">
-                <h5 class="card-text text-light">{{move.name.toLocaleUpperCase()}}</h5>
+                <h5 class="card-text text-light">{{movimiento.name.toLocaleUpperCase()}}</h5>
+                <p><strong>Precisión:</strong> {{movimientoDetalles[movimiento.name].accuracy}}</p>
+                <p><strong>Poder:</strong> {{movimientoDetalles[movimiento.name].power}}</p>
+                <p><strong>PP:</strong> {{movimientoDetalles[movimiento.name].pp}}</p>
+                <p><strong>Tipo:</strong> {{movimientoDetalles[movimiento.name].type.name}}</p>
+                <p><strong>Descripción:</strong> {{movimientoDetalles[movimiento.name].effect_entries[0].effect}}</p>
             </div>
+
         </div>
     }
 </div>
