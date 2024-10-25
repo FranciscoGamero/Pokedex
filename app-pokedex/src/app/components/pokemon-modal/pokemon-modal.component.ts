@@ -3,7 +3,6 @@ import { DescripcionPokemon, DetallePokemon } from '../../models/detallePokemon.
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonService } from '../../services/pokemon.service';
 import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon-modal',
@@ -21,7 +20,7 @@ export class NgbdModalContent implements OnInit{
       this.getPokemonDescription(this.PokemonSeleccionado.name);
       this.pokemonService.getOnePokemon(this.PokemonSeleccionado.name).subscribe(
         (detalle: DetallePokemon) => {
-          this.PokemonSeleccionado = detalle; // Actualizamos los detalles del Pokémon en el modal
+          this.PokemonSeleccionado = detalle;
         }
       );
     }
@@ -30,7 +29,7 @@ export class NgbdModalContent implements OnInit{
     const apiUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonName.toLowerCase()}/`;
 
     this.http.get<DescripcionPokemon>(apiUrl).subscribe((descripcion) => {
-      this.pokemonDescription = this.extractFlavorText(descripcion); // Filtrar por idioma (español)
+      this.pokemonDescription = this.extractFlavorText(descripcion);
     });
   }
 	activeModal = inject(NgbActiveModal);
@@ -46,6 +45,12 @@ export class NgbdModalContent implements OnInit{
   private extractFlavorText(descripcion: DescripcionPokemon): string {
     const flavorTextEntry = descripcion.flavor_text_entries.find(entry => entry.language.name === 'es');
     return flavorTextEntry!.flavor_text;
+  }
+
+  fondoTipos(nombreTipo: String){
+    switch(nombreTipo){
+      
+    }
   }
 }
 

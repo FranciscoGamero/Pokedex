@@ -34,8 +34,8 @@ export class ListaPokemonComponent implements OnInit{
     return primeraLetra.toUpperCase() + resto.toLowerCase();
   }
   openModal(pokemon: Pokemon) {
-    const modalRef = this.modalService.open(NgbdModalContent, { size: 'lg' }); // Abre el modal
-    modalRef.componentInstance.PokemonSeleccionado = pokemon;  // Pasamos los datos del Pokémon seleccionado al modal
+    const modalRef = this.modalService.open(NgbdModalContent, { size: 'xl' });
+    modalRef.componentInstance.PokemonSeleccionado = pokemon;
     
   }
 }
